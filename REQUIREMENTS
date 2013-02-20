@@ -1,0 +1,23 @@
+Portable and extendable source code for virtual stack machine
+Small runtime with 100+ primitive operations
+Should allow extension with additional primitive operations
+Fast threading (next, nest, unnest)
+
+Support programming in the large ie modules, packaging and strick versioning
+Compile module source to object code and/or implementation language code
+Static code coverage and usage profile at compile time
+Support code modules and simple dependency definition
+Object code file format should allow loading of code only
+Archive file with multiple versions of object files
+Strip symbol table from object code 
+
+Dynamic or minimum linking of object code at run-time
+Relocatable object code (modules)
+
+Build-in support for tracing, profiling and coverage 
+Dynamic code coverage and usage profile at runtime time
+Run-time switching between tracing, profiling and normal execution
+Debugging support should be removable
+
+
+

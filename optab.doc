@@ -1,0 +1,32 @@
+-128..-1,n	Two byte instruction pointer relative nest. Max -32768 relative address.
+		NEST(h,l)
+0..127		One byte token operation codes
+0..3		Two byte token operation code. Max 4 x 256 (1024) operation codes.
+0,n		EXT0(n), extended nest zero
+1,n		EXT1(n), extended nest one
+2,n		EXT2(n), extended nest two
+3,n		EXT3(n)  extended nest three
+
+4		NEXT, inner interpreter
+5		TRACING, inner interpreter with tracing
+6		PROFILING, inner interpreter with profiling 
+
+7		NEST(h,l), explicit nest
+8		NNEST(s,s*(h,l): x -- ), nest table. Parameter(s) must be within 0 and s-1
+9		UNNEST(), return from function call
+10		UNNEZE(x -- [x:x != 0] [: x == 0]), return from function call on zero
+
+11		MEST(m,h,l), nest to module(m) relative address(h,l)
+12		MESTI(m,i), nest to module symbol(i)
+13		UNMEST(), restore module pointer after MEST. Caller side
+14		UNMEZT(), restore module pointer after MEST and return from function call
+15		UNSLIT( -- s), push address to inline literal and return from function call
+16		UNLIT( -- n), push inline literal(32 bit), MSB first in instruction stream
+
+17		BRA(n), branch always, signed byte offset
+18		BRAX(h,l), branch always extended, two byte offset
+19		BRZX(h,l: s -- ), branch zero extended, two byte offset
+20		BRZE(n): s -- ), branch zero equal, signed byte offset
+21		BRZN(n): s -- ), branch zero not-equal, signed byte offset
+22		DBZN(n): s -- [s-1] or []), decrement branch zero not-equal, signed byte offset
+23		RBZN(n): r -- [r-1] or []), decrement branch zero not-equal, signed byte offset

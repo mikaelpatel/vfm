@@ -1,0 +1,9 @@
+VFM_USE_NEXT_POINTER
+	Use a pointer to the inner interpreter (fetch next instruction).
+	This is used to implement instruction tracing, coverage and profiling.
+
+VFM_USE_INLINE_NEXT
+	If a pointer to the inner interpreter is not used, performance may
+	be improved by inlining the normal inner interpreter. This grows the
+	code size and may exhaust the instruction cache. 
+
