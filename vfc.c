@@ -117,16 +117,18 @@ int main(int argc, char* argv[])
     } 
 
     // Generate object code
-    strcpy(filename, mod.name);
-    vfm_name2path(filename);
-    strcat(filename, ".vfm");
-    outfile = fopen(filename, "w");
-    if (!outfile) {
-      fprintf(stderr, "%s: error: could not create object file\n", filename);
-      return (-1);
+    if (object) {
+      strcpy(filename, mod.name);
+      vfm_name2path(filename);
+      strcat(filename, ".vfm");
+      outfile = fopen(filename, "w");
+      if (!outfile) {
+	fprintf(stderr, "%s: error: could not create object file\n", filename);
+	return (-1);
+      }
+      vfm_store(outfile, &mod);
+      fclose(outfile);
     }
-    vfm_store(outfile, &mod);
-    fclose(outfile);
   }
   return (0);
 }

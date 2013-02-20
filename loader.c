@@ -137,7 +137,8 @@ static int load(FILE* file, int debug, vfm_mod_t *mod, vfm_arc_t *arc)
   fgetint(&size, file);
   code = (vfm_code_t*) malloc(sizeof(vfm_code_t) * size);
   if (!code) return (vfm_errno = VFM_MALLOC_ERR);
-  res = fread(code, size, 1, file);
+  res = fread(code, 1, size, file);
+  if (res != size) return (vfm_errno = VFM_FILE_ERR);
 
   // Setup module segment data
   mod->segment.size = size;
